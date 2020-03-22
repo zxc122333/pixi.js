@@ -1,4 +1,3 @@
-
 export declare interface IRenderOptions {
     view: HTMLCanvasElement;
     antialias: boolean;
@@ -40,7 +39,7 @@ export declare interface ISettings {
     TARGET_FPMS?: number;
 }
 
-export declare const isMobile: import("ismobilejs/types").isMobileResult;
+export declare const isMobile: import('ismobilejs/types').isMobileResult;
 
 /**
  * User's customizable globals for overriding the default PIXI settings, such
@@ -56,4 +55,4 @@ export declare const isMobile: import("ismobilejs/types").isMobileResult;
  */
 export declare const settings: ISettings;
 
-export { }
+export { };

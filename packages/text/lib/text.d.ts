@@ -66,7 +66,8 @@ export declare interface ITextStyle {
  * @extends PIXI.Sprite
  * @memberof PIXI
  */
-export declare class Text extends Sprite {
+export declare class Text extends Sprite
+{
     canvas: HTMLCanvasElement;
     context: CanvasRenderingContext2D;
     localStyleID: number;
@@ -216,7 +217,8 @@ export declare enum TEXT_GRADIENT {
  * @class
  * @memberof PIXI
  */
-export declare class TextMetrics {
+export declare class TextMetrics
+{
     text: string;
     style: TextStyle;
     width: number;
@@ -408,7 +410,8 @@ export declare class TextMetrics {
  * @class
  * @memberof PIXI
  */
-export declare class TextStyle implements ITextStyle {
+export declare class TextStyle implements ITextStyle
+{
     styleID: number;
     protected _align: TextStyleAlign;
     protected _breakWords: boolean;
@@ -746,4 +749,4 @@ export declare type TextStyleTextBaseline = 'alphabetic' | 'top' | 'hanging' | '
 
 export declare type TextStyleWhiteSpace = 'normal' | 'pre' | 'pre-line';
 
-export { }
+export { };

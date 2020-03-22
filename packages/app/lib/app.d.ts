@@ -23,7 +23,8 @@ import { Renderer } from '@pixi/core';
  * @class
  * @memberof PIXI
  */
-export declare class Application {
+export declare class Application
+{
     static _plugins: IApplicationPlugin[];
     stage: Container;
     renderer: Renderer | AbstractRenderer;
@@ -108,4 +109,4 @@ export declare interface IApplicationPlugin {
     destroy: (...params: any[]) => any;
 }
 
-export { }
+export { };

@@ -27,7 +27,8 @@ import { Texture } from '@pixi/core';
  * @class
  * @memberof PIXI
  */
-export declare class Spritesheet {
+export declare class Spritesheet
+{
     /**
      * The maximum number of Textures to build per process.
      *
@@ -113,7 +114,8 @@ export declare class Spritesheet {
  * @memberof PIXI
  * @implements PIXI.ILoaderPlugin
  */
-export declare class SpritesheetLoader {
+export declare class SpritesheetLoader
+{
     /**
      * Called after a resource is loaded.
      * @see PIXI.Loader.loaderMiddleware
@@ -129,4 +131,4 @@ export declare class SpritesheetLoader {
     private static getResourcePath;
 }
 
-export { }
+export { };

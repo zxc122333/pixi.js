@@ -24,7 +24,8 @@ import { RenderTexture } from '@pixi/core';
  * @class
  * @memberof PIXI
  */
-export declare class Extract implements IRendererPlugin {
+export declare class Extract implements IRendererPlugin
+{
     private renderer;
     /**
      * @param {PIXI.Renderer} renderer - A reference to the current renderer
@@ -83,4 +84,4 @@ export declare class Extract implements IRendererPlugin {
     static arrayPostDivide(pixels: number[] | Uint8Array | Uint8ClampedArray, out: number[] | Uint8Array | Uint8ClampedArray): void;
 }
 
-export { }
+export { };

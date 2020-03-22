@@ -39,7 +39,8 @@ export declare interface IMeshMaterialOptions {
  * @extends PIXI.Container
  * @memberof PIXI
  */
-export declare class Mesh extends Container {
+export declare class Mesh extends Container
+{
     readonly geometry: Geometry;
     shader: MeshMaterial;
     state: State;
@@ -184,7 +185,8 @@ export declare class Mesh extends Container {
  * @class
  * @memberof PIXI
  */
-export declare class MeshBatchUvs {
+export declare class MeshBatchUvs
+{
     readonly data: Float32Array;
     uvBuffer: Buffer;
     uvMatrix: TextureMatrix;
@@ -221,7 +223,8 @@ export declare class MeshBatchUvs {
  * @memberof PIXI
  * @extends PIXI.Geometry
  */
-export declare class MeshGeometry extends Geometry {
+export declare class MeshGeometry extends Geometry
+{
     private _updateId;
     /**
      * @param {Float32Array|number[]} [vertices] - Positional data on geometry.
@@ -244,7 +247,8 @@ export declare class MeshGeometry extends Geometry {
  * @memberof PIXI
  * @extends PIXI.Shader
  */
-export declare class MeshMaterial extends Shader {
+export declare class MeshMaterial extends Shader
+{
     readonly uvMatrix: TextureMatrix;
     batchable: boolean;
     pluginName: string;
@@ -290,4 +294,4 @@ export declare class MeshMaterial extends Shader {
     update(): void;
 }
 
-export { }
+export { };

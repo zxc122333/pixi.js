@@ -22,7 +22,8 @@ import { Texture } from '@pixi/core';
  * @class
  * @private
  */
-declare class ArcUtils {
+declare class ArcUtils
+{
     /**
      * The arcTo() method creates an arc/curve between two tangents on the canvas.
      *
@@ -71,7 +72,8 @@ declare const BATCH_POOL: Array<BatchPart>;
  * @class
  * @memberof PIXI.graphicsUtils
  */
-declare class BatchPart {
+declare class BatchPart
+{
     style: LineStyle | FillStyle;
     start: number;
     size: number;
@@ -101,7 +103,8 @@ declare class BatchPart {
  * @class
  * @private
  */
-declare class BezierUtils {
+declare class BezierUtils
+{
     /**
      * Calculate length of bezier curve.
      * Analytical solution is impossible, since it involves an integral that does not integrate in general.
@@ -222,7 +225,8 @@ declare const FILL_COMMANDS: Record<SHAPES, IShapeBuildCommand>;
  * @class
  * @memberof PIXI
  */
-export declare class FillStyle {
+export declare class FillStyle
+{
     /**
      * The hex color value used when coloring the Graphics object.
      *
@@ -288,7 +292,8 @@ export declare class FillStyle {
  * @extends PIXI.Container
  * @memberof PIXI
  */
-export declare class Graphics extends Container {
+export declare class Graphics extends Container
+{
     /**
      * Temporary point to use for containsPoint
      *
@@ -722,7 +727,8 @@ export declare const GRAPHICS_CURVES: IGraphicsCurvesSettings;
  * @class
  * @memberof PIXI
  */
-export declare class GraphicsData {
+export declare class GraphicsData
+{
     shape: IShape;
     lineStyle: LineStyle;
     fillStyle: FillStyle;
@@ -762,7 +768,8 @@ export declare class GraphicsData {
  * @extends PIXI.BatchGeometry
  * @memberof PIXI
  */
-export declare class GraphicsGeometry extends BatchGeometry {
+export declare class GraphicsGeometry extends BatchGeometry
+{
     /**
      * The maximum number of points to consider an object "batchable",
      * able to be batched by the renderer's batch system.
@@ -967,22 +974,22 @@ export declare class GraphicsGeometry extends BatchGeometry {
 
 declare namespace graphicsUtils {
   export {
-    buildPoly,
-    buildCircle,
-    buildRectangle,
-    buildRoundedRectangle,
-    FILL_COMMANDS,
-    BATCH_POOL,
-    DRAW_CALL_POOL,
-    buildLine,
-    Star,
-    ArcUtils,
-    BezierUtils,
-    QuadraticUtils,
-    BatchPart,
-  }
+      buildPoly,
+      buildCircle,
+      buildRectangle,
+      buildRoundedRectangle,
+      FILL_COMMANDS,
+      BATCH_POOL,
+      DRAW_CALL_POOL,
+      buildLine,
+      Star,
+      ArcUtils,
+      BezierUtils,
+      QuadraticUtils,
+      BatchPart,
+  };
 }
-export { graphicsUtils }
+export { graphicsUtils };
 
 declare interface IArcLikeShape {
     cx: number;
@@ -1046,7 +1053,8 @@ declare interface IShapeBuildCommand {
  * @class
  * @extends PIXI.FillStyle
  */
-export declare class LineStyle extends FillStyle {
+export declare class LineStyle extends FillStyle
+{
     /**
      * The width (thickness) of any lines drawn.
      *
@@ -1085,7 +1093,8 @@ export declare class LineStyle extends FillStyle {
  * @class
  * @private
  */
-declare class QuadraticUtils {
+declare class QuadraticUtils
+{
     /**
      * Calculate length of quadratic curve
      * @see {@link http://www.malczak.linuxpl.com/blog/quadratic-bezier-curve-length/}
@@ -1129,8 +1138,9 @@ declare class QuadraticUtils {
  * @param {number} [rotation=0] - The rotation of the star in radians, where 0 is vertical
  * @return {PIXI.Graphics} This Graphics object. Good for chaining method calls
  */
-declare class Star extends Polygon {
+declare class Star extends Polygon
+{
     constructor(x: number, y: number, points: number, radius: number, innerRadius: number, rotation?: number);
 }
 
-export { }
+export { };

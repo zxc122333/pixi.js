@@ -11,7 +11,8 @@ import { Filter } from '@pixi/core';
  * @extends PIXI.Filter
  * @memberof PIXI.filters
  */
-export declare class NoiseFilter extends Filter {
+export declare class NoiseFilter extends Filter
+{
     /**
      * @param {number} [noise=0.5] - The noise intensity, should be a normalized value in the range [0, 1].
      * @param {number} [seed] - A random seed for the noise generation. Default is `Math.random()`.
@@ -34,4 +35,4 @@ export declare class NoiseFilter extends Filter {
     set seed(value: number);
 }
 
-export { }
+export { };

@@ -1,7 +1,5 @@
 import { ALPHA_MODES } from '@pixi/constants';
 import { ArrayFixed } from '@pixi/utils';
-import { BaseTexture as BaseTexture_2 } from '@pixi/core';
-import { BatchTextureArray as BatchTextureArray_2 } from '@pixi/core';
 import { BLEND_MODES } from '@pixi/constants';
 import { BUFFER_BITS } from '@pixi/constants';
 import { CanvasRenderTarget } from '@pixi/utils';
@@ -11,32 +9,18 @@ import { DRAW_MODES } from '@pixi/constants';
 import { EventEmitter } from '@pixi/utils';
 import { Extract } from '@pixi/extract';
 import { FORMATS } from '@pixi/constants';
-import { Framebuffer as Framebuffer_2 } from '@pixi/core';
-import { Geometry as Geometry_2 } from '@pixi/core';
-import { IBaseTextureOptions as IBaseTextureOptions_2 } from '@pixi/core';
-import { IFilterTarget as IFilterTarget_2 } from '@pixi/core';
-import { IMaskTarget as IMaskTarget_2 } from '@pixi/core';
-import { IRenderingContext as IRenderingContext_2 } from '@pixi/core';
 import { ISize } from '@pixi/math';
-import { ISpriteMaskTarget as ISpriteMaskTarget_2 } from '@pixi/core';
 import { MASK_TYPES } from '@pixi/constants';
-import { MaskData as MaskData_2 } from '@pixi/core';
 import { Matrix } from '@pixi/math';
 import { MIPMAP_MODES } from '@pixi/constants';
 import { MSAA_QUALITY } from '@pixi/constants';
 import { Point } from '@pixi/math';
-import { Program as Program_2 } from '@pixi/core';
 import { Rectangle } from '@pixi/math';
-import { Renderer as Renderer_2 } from '@pixi/core';
 import { RENDERER_TYPE } from '@pixi/constants';
-import { RenderTexture as RenderTexture_2 } from '@pixi/core';
 import { Runner } from '@pixi/runner';
 import { SCALE_MODES } from '@pixi/constants';
-import { Shader as Shader_2 } from '@pixi/core';
 import { TARGETS } from '@pixi/constants';
-import { Texture as Texture_2 } from '@pixi/core';
 import { TYPES } from '@pixi/constants';
-import { UniformGroup as UniformGroup_2 } from '@pixi/core';
 import { WRAP_MODES } from '@pixi/constants';
 
 /**
@@ -52,7 +36,8 @@ import { WRAP_MODES } from '@pixi/constants';
  * @memberof PIXI
  * @extends PIXI.ObjectRenderer
  */
-export declare class AbstractBatchRenderer extends ObjectRenderer {
+export declare class AbstractBatchRenderer extends ObjectRenderer
+{
     readonly state: State;
     size: number;
     MAX_TEXTURES: number;
@@ -64,7 +49,7 @@ export declare class AbstractBatchRenderer extends ObjectRenderer {
     protected _bufferedElements: Array<any>;
     protected _bufferedTextures: Array<BaseTexture>;
     protected _bufferSize: number;
-    protected _shader: Shader_2;
+    protected _shader: Shader;
     protected _flushId: number;
     protected _aBuffers: Array<ViewableBuffer>;
     protected _iBuffers: Array<Uint16Array>;
@@ -82,7 +67,7 @@ export declare class AbstractBatchRenderer extends ObjectRenderer {
      *
      * @param {PIXI.Renderer} renderer - The renderer this works for.
      */
-    constructor(renderer: Renderer_2);
+    constructor(renderer: Renderer);
     /**
      * Handles the `contextChange` signal.
      *
@@ -207,13 +192,14 @@ export declare class AbstractBatchRenderer extends ObjectRenderer {
  * @extends PIXI.System
  * @memberof PIXI.systems
  */
-declare class AbstractMaskSystem extends System {
+declare class AbstractMaskSystem extends System
+{
     protected maskStack: Array<MaskData>;
     protected glConst: number;
     /**
      * @param {PIXI.Renderer} renderer - The renderer this System works for.
      */
-    constructor(renderer: Renderer_2);
+    constructor(renderer: Renderer);
     /**
      * gets count of masks of certain type
      * @returns {number}
@@ -246,7 +232,8 @@ declare class AbstractMaskSystem extends System {
  * @extends PIXI.utils.EventEmitter
  * @memberof PIXI
  */
-export declare abstract class AbstractRenderer extends EventEmitter {
+export declare abstract class AbstractRenderer extends EventEmitter
+{
     resolution: number;
     clearBeforeRender?: boolean;
     readonly options: IRendererOptions;
@@ -353,7 +340,8 @@ export declare abstract class AbstractRenderer extends EventEmitter {
  * @param {number} [options.width] - Width of the resource
  * @param {number} [options.height] - Height of the resource
  */
-declare class ArrayResource extends Resource {
+declare class ArrayResource extends Resource
+{
     readonly length: number;
     items: Array<BaseTexture>;
     itemDirtyIds: Array<number>;
@@ -409,7 +397,8 @@ declare class ArrayResource extends Resource {
  * @class
  * @memberof PIXI
  */
-export declare class Attribute {
+export declare class Attribute
+{
     buffer: number;
     size: number;
     normalized: boolean;
@@ -514,7 +503,8 @@ declare function autoDetectResource(source: any, options?: IAutoDetectOptions): 
  * @extends PIXI.resources.Resource
  * @memberof PIXI.resources
  */
-declare class BaseImageResource extends Resource {
+declare class BaseImageResource extends Resource
+{
     source: ImageSource;
     noSubImage: boolean;
     /**
@@ -591,10 +581,11 @@ declare class BaseImageResource extends Resource {
  * @extends PIXI.BaseTexture
  * @memberof PIXI
  */
-export declare class BaseRenderTexture extends BaseTexture {
+export declare class BaseRenderTexture extends BaseTexture
+{
     clearColor: number[];
     framebuffer: Framebuffer;
-    maskStack: Array<MaskData_2>;
+    maskStack: Array<MaskData>;
     filterStack: Array<any>;
     _canvasRenderTarget: CanvasRenderTarget;
     /**
@@ -653,7 +644,8 @@ export declare class BaseRenderTexture extends BaseTexture {
  * @param {object} [options.resourceOptions] - Optional resource options,
  *        see {@link PIXI.resources.autoDetectResource autoDetectResource}
  */
-export declare class BaseTexture extends EventEmitter {
+export declare class BaseTexture extends EventEmitter
+{
     width: number;
     height: number;
     resolution: number;
@@ -827,7 +819,8 @@ export declare class BaseTexture extends EventEmitter {
  * @class
  * @memberof PIXI
  */
-export declare class BatchDrawCall {
+export declare class BatchDrawCall
+{
     texArray: BatchTextureArray;
     type: DRAW_MODES;
     blend: BLEND_MODES;
@@ -843,7 +836,8 @@ export declare class BatchDrawCall {
  * @class
  * @memberof PIXI
  */
-export declare class BatchGeometry extends Geometry {
+export declare class BatchGeometry extends Geometry
+{
     _buffer: Buffer;
     _indexBuffer: Buffer;
     /**
@@ -858,7 +852,8 @@ export declare class BatchGeometry extends Geometry {
  * @memberof PIXI
  * @hideconstructor
  */
-export declare class BatchPluginFactory {
+export declare class BatchPluginFactory
+{
     /**
      * Create a new BatchRenderer plugin for Renderer. this convenience can provide an easy way
      * to extend BatchRenderer with all the necessary pieces.
@@ -915,7 +910,8 @@ export declare const BatchRenderer: typeof AbstractBatchRenderer;
  * @class
  * @memberof PIXI
  */
-export declare class BatchShaderGenerator {
+export declare class BatchShaderGenerator
+{
     vertexSrc: string;
     fragTemplate: string;
     programCache: {
@@ -940,13 +936,14 @@ export declare class BatchShaderGenerator {
  * @extends PIXI.System
  * @memberof PIXI.systems
  */
-declare class BatchSystem extends System {
+declare class BatchSystem extends System
+{
     readonly emptyRenderer: ObjectRenderer;
     currentRenderer: ObjectRenderer;
     /**
      * @param {PIXI.Renderer} renderer - The renderer this System works for.
      */
-    constructor(renderer: Renderer_2);
+    constructor(renderer: Renderer);
     /**
      * Changes the current renderer to the one given in parameter
      *
@@ -969,7 +966,7 @@ declare class BatchSystem extends System {
      * @param {PIXI.BaseTexture[]} arr copy destination
      * @param {number} maxTextures number of copied elements
      */
-    copyBoundTextures(arr: BaseTexture_2[], maxTextures: number): void;
+    copyBoundTextures(arr: BaseTexture[], maxTextures: number): void;
     /**
      * Assigns batch locations to textures in array based on boundTextures state.
      * All textures in texArray should have `_batchEnabled = _batchId`,
@@ -980,7 +977,7 @@ declare class BatchSystem extends System {
      * @param {number} batchId marker for _batchEnabled param of textures in texArray
      * @param {number} maxTextures number of texture locations to manipulate
      */
-    boundArray(texArray: BatchTextureArray_2, boundTextures: Array<BaseTexture_2>, batchId: number, maxTextures: number): void;
+    boundArray(texArray: BatchTextureArray, boundTextures: Array<BaseTexture>, batchId: number, maxTextures: number): void;
 }
 
 /**
@@ -990,8 +987,9 @@ declare class BatchSystem extends System {
  * @class
  * @memberof PIXI
  */
-export declare class BatchTextureArray {
-    elements: BaseTexture_2[];
+export declare class BatchTextureArray
+{
+    elements: BaseTexture[];
     ids: number[];
     count: number;
     constructor();
@@ -1004,7 +1002,8 @@ export declare class BatchTextureArray {
  * @class
  * @memberof PIXI
  */
-export declare class Buffer {
+export declare class Buffer
+{
     data: ITypedArray;
     index: boolean;
     static: boolean;
@@ -1052,7 +1051,8 @@ export declare class Buffer {
  * @extends PIXI.resources.Resource
  * @memberof PIXI.resources
  */
-declare class BufferResource extends Resource {
+declare class BufferResource extends Resource
+{
     data: Float32Array | Uint8Array | Uint32Array;
     /**
      * @param {Float32Array|Uint8Array|Uint32Array} source - Source buffer
@@ -1094,7 +1094,8 @@ declare class BufferResource extends Resource {
  * @memberof PIXI.resources
  * @param {HTMLCanvasElement} source - Canvas element to use
  */
-declare class CanvasResource extends BaseImageResource {
+declare class CanvasResource extends BaseImageResource
+{
     /**
      * Used to auto-detect the type of resource.
      *
@@ -1105,7 +1106,7 @@ declare class CanvasResource extends BaseImageResource {
     static test(source: any): source is OffscreenCanvas | HTMLCanvasElement;
 }
 
-export declare function checkMaxIfStatementsInShader(maxIfs: number, gl: IRenderingContext_2): number;
+export declare function checkMaxIfStatementsInShader(maxIfs: number, gl: IRenderingContext): number;
 
 /**
  * System plugin to the renderer to manage the context.
@@ -1114,11 +1115,12 @@ export declare function checkMaxIfStatementsInShader(maxIfs: number, gl: IRender
  * @extends PIXI.System
  * @memberof PIXI.systems
  */
-declare class ContextSystem extends System {
+declare class ContextSystem extends System
+{
     webGLVersion: number;
     readonly supports: ISupportDict;
     protected CONTEXT_UID: number;
-    protected gl: IRenderingContext_2;
+    protected gl: IRenderingContext;
     extensions: {
         drawBuffers?: WEBGL_draw_buffers;
         depthTexture?: OES_texture_float;
@@ -1135,7 +1137,7 @@ declare class ContextSystem extends System {
     /**
      * @param {PIXI.Renderer} renderer - The renderer this System works for.
      */
-    constructor(renderer: Renderer_2);
+    constructor(renderer: Renderer);
     /**
      * `true` if the context is lost
      * @member {boolean}
@@ -1146,14 +1148,14 @@ declare class ContextSystem extends System {
      * Handle the context change event
      * @param {WebGLRenderingContext} gl new webgl context
      */
-    protected contextChange(gl: IRenderingContext_2): void;
+    protected contextChange(gl: IRenderingContext): void;
     /**
      * Initialize the context
      *
      * @protected
      * @param {WebGLRenderingContext} gl - WebGL context
      */
-    initFromContext(gl: IRenderingContext_2): void;
+    initFromContext(gl: IRenderingContext): void;
     /**
      * Initialize from context options
      *
@@ -1170,7 +1172,7 @@ declare class ContextSystem extends System {
      * @see https://developer.mozilla.org/en/docs/Web/API/HTMLCanvasElement/getContext
      * @return {WebGLRenderingContext} the WebGL context
      */
-    createContext(canvas: HTMLCanvasElement, options: WebGLContextAttributes): IRenderingContext_2;
+    createContext(canvas: HTMLCanvasElement, options: WebGLContextAttributes): IRenderingContext;
     /**
      * Auto-populate the extensions
      *
@@ -1203,7 +1205,7 @@ declare class ContextSystem extends System {
      * @protected
      * @param {WebGLRenderingContext} gl - Render context
      */
-    protected validateContext(gl: IRenderingContext_2): void;
+    protected validateContext(gl: IRenderingContext): void;
 }
 
 /**
@@ -1218,7 +1220,8 @@ declare class ContextSystem extends System {
  * @param {number} [options.width] - Width of resource
  * @param {number} [options.height] - Height of resource
  */
-declare class CubeResource extends ArrayResource {
+declare class CubeResource extends ArrayResource
+{
     items: ArrayFixed<BaseTexture, 6>;
     constructor(source: ArrayFixed<string | Resource, 6>, options?: ICubeResourceOptions);
     /**
@@ -1253,9 +1256,9 @@ declare class CubeResource extends ArrayResource {
     static test(source: any): source is ArrayFixed<string | Resource, 6>;
 }
 
-export declare const defaultFilterVertex:string;
+export declare const defaultFilterVertex: string;
 
-export declare const defaultVertex:string;
+export declare const defaultVertex: string;
 
 /**
  * Filter is a special type of WebGL shader that is applied to the screen.
@@ -1393,7 +1396,8 @@ export declare const defaultVertex:string;
  * @memberof PIXI
  * @extends PIXI.Shader
  */
-export declare class Filter extends Shader {
+export declare class Filter extends Shader
+{
     padding: number;
     resolution: number;
     enabled: boolean;
@@ -1419,7 +1423,7 @@ export declare class Filter extends Shader {
      *        There are some useful properties in the currentState :
      *        target, filters, sourceFrame, destinationFrame, renderTarget, resolution
      */
-    apply(filterManager: FilterSystem, input: RenderTexture_2, output: RenderTexture_2, clearMode: CLEAR_MODES, _currentState?: FilterState): void;
+    apply(filterManager: FilterSystem, input: RenderTexture, output: RenderTexture, clearMode: CLEAR_MODES, _currentState?: FilterState): void;
     /**
      * Sets the blendmode of the filter
      *
@@ -1462,8 +1466,9 @@ export declare class Filter extends Shader {
  * @class
  * @private
  */
-export declare class FilterState {
-    renderTexture: RenderTexture_2;
+export declare class FilterState
+{
+    renderTexture: RenderTexture;
     target: IFilterTarget;
     legacy: boolean;
     resolution: number;
@@ -1485,7 +1490,8 @@ export declare class FilterState {
  * @memberof PIXI.systems
  * @extends PIXI.System
  */
-declare class FilterSystem extends System {
+declare class FilterSystem extends System
+{
     readonly defaultFilterStack: Array<FilterState>;
     statePool: Array<FilterState>;
     texturePool: RenderTexturePool;
@@ -1498,7 +1504,7 @@ declare class FilterSystem extends System {
     /**
      * @param {PIXI.Renderer} renderer - The renderer this System works for.
      */
-    constructor(renderer: Renderer_2);
+    constructor(renderer: Renderer);
     /**
      * Adds a new filter to the System.
      *
@@ -1516,7 +1522,7 @@ declare class FilterSystem extends System {
      * @param {PIXI.RenderTexture} filterTexture renderTexture to bind, should belong to filter pool or filter stack
      * @param {PIXI.CLEAR_MODES} [clearMode] clearMode, by default its CLEAR/YES. See {@link PIXI.CLEAR_MODES}
      */
-    bindAndClear(filterTexture: RenderTexture_2, clearMode?: CLEAR_MODES): void;
+    bindAndClear(filterTexture: RenderTexture, clearMode?: CLEAR_MODES): void;
     /**
      * Draws a filter.
      *
@@ -1525,7 +1531,7 @@ declare class FilterSystem extends System {
      * @param {PIXI.RenderTexture} output - The target to output to.
      * @param {PIXI.CLEAR_MODES} [clearMode] - Should the output be cleared before rendering to it
      */
-    applyFilter(filter: Filter, input: RenderTexture_2, output: RenderTexture_2, clearMode: CLEAR_MODES): void;
+    applyFilter(filter: Filter, input: RenderTexture, output: RenderTexture, clearMode: CLEAR_MODES): void;
     /**
      * Multiply _input normalized coordinates_ to this matrix to get _sprite texture normalized coordinates_.
      *
@@ -1535,7 +1541,7 @@ declare class FilterSystem extends System {
      * @param {PIXI.Sprite} sprite - The sprite to map to.
      * @return {PIXI.Matrix} The mapped matrix.
      */
-    calculateSpriteMatrix(outputMatrix: Matrix, sprite: ISpriteMaskTarget_2): Matrix;
+    calculateSpriteMatrix(outputMatrix: Matrix, sprite: ISpriteMaskTarget): Matrix;
     /**
      * Destroys this Filter System.
      */
@@ -1549,7 +1555,7 @@ declare class FilterSystem extends System {
      * @param {number} [resolution=1] - The resolution of the render texture.
      * @return {PIXI.RenderTexture} The new render texture.
      */
-    protected getOptimalFilterTexture(minWidth: number, minHeight: number, resolution?: number): RenderTexture_2;
+    protected getOptimalFilterTexture(minWidth: number, minHeight: number, resolution?: number): RenderTexture;
     /**
      * Gets extra render texture to use inside current filter
      * To be compliant with older filters, you can use params in any order
@@ -1558,13 +1564,13 @@ declare class FilterSystem extends System {
      * @param {number} [resolution] override resolution of the renderTexture
      * @returns {PIXI.RenderTexture}
      */
-    getFilterTexture(input?: RenderTexture_2, resolution?: number): RenderTexture_2;
+    getFilterTexture(input?: RenderTexture, resolution?: number): RenderTexture;
     /**
      * Frees a render texture back into the pool.
      *
      * @param {PIXI.RenderTexture} renderTexture - The renderTarget to free
      */
-    returnFilterTexture(renderTexture: RenderTexture_2): void;
+    returnFilterTexture(renderTexture: RenderTexture): void;
     /**
      * Empties the texture pool.
      */
@@ -1581,7 +1587,8 @@ declare class FilterSystem extends System {
  * @class
  * @memberof PIXI
  */
-export declare class Framebuffer {
+export declare class Framebuffer
+{
     width: number;
     height: number;
     multisample: MSAA_QUALITY;
@@ -1649,20 +1656,21 @@ export declare class Framebuffer {
  * @extends PIXI.System
  * @memberof PIXI.systems
  */
-declare class FramebufferSystem extends System {
+declare class FramebufferSystem extends System
+{
     readonly managedFramebuffers: Array<Framebuffer>;
     current: Framebuffer;
     viewport: Rectangle;
     hasMRT: boolean;
     writeDepthTexture: boolean;
     protected CONTEXT_UID: number;
-    protected gl: IRenderingContext_2;
+    protected gl: IRenderingContext;
     protected unknownFramebuffer: Framebuffer;
     protected msaaSamples: Array<number>;
     /**
      * @param {PIXI.Renderer} renderer - The renderer this System works for.
      */
-    constructor(renderer: Renderer_2);
+    constructor(renderer: Renderer);
     /**
      * Sets up the renderer context and necessary buffers.
      */
@@ -1795,7 +1803,8 @@ declare class FramebufferSystem extends System {
  * @class
  * @memberof PIXI
  */
-export declare class Geometry {
+export declare class Geometry
+{
     buffers: Array<Buffer>;
     indexBuffer: Buffer;
     attributes: {
@@ -1903,17 +1912,18 @@ export declare class Geometry {
  * @extends PIXI.System
  * @memberof PIXI.systems
  */
-declare class GeometrySystem extends System {
+declare class GeometrySystem extends System
+{
     hasVao: boolean;
     hasInstance: boolean;
     canUseUInt32ElementIndex: boolean;
     protected CONTEXT_UID: number;
-    protected gl: IRenderingContext_2;
-    protected _activeGeometry: Geometry_2;
+    protected gl: IRenderingContext;
+    protected _activeGeometry: Geometry;
     protected _activeVao: WebGLVertexArrayObject;
     protected _boundBuffer: GLBuffer;
     readonly managedGeometries: {
-        [key: number]: Geometry_2;
+        [key: number]: Geometry;
     };
     readonly managedBuffers: {
         [key: number]: Buffer;
@@ -1921,7 +1931,7 @@ declare class GeometrySystem extends System {
     /**
      * @param {PIXI.Renderer} renderer - The renderer this System works for.
      */
-    constructor(renderer: Renderer_2);
+    constructor(renderer: Renderer);
     /**
      * Sets up the renderer context and necessary buffers.
      */
@@ -1932,7 +1942,7 @@ declare class GeometrySystem extends System {
      * @param {PIXI.Geometry} geometry instance of geometry to bind
      * @param {PIXI.Shader} [shader] instance of shader to use vao for
      */
-    bind(geometry?: Geometry_2, shader?: Shader_2): void;
+    bind(geometry?: Geometry, shader?: Shader): void;
     /**
      * Reset and unbind any active VAO and geometry
      */
@@ -1948,7 +1958,7 @@ declare class GeometrySystem extends System {
      * @param {PIXI.Geometry} geometry - Geometry instance
      * @param {PIXI.Program} program - Program instance
      */
-    protected checkCompatibility(geometry: Geometry_2, program: Program_2): void;
+    protected checkCompatibility(geometry: Geometry, program: Program): void;
     /**
      * Takes a geometry and program and generates a unique signature for them.
      *
@@ -1957,7 +1967,7 @@ declare class GeometrySystem extends System {
      * @returns {String} Unique signature of the geometry and program
      * @protected
      */
-    protected getSignature(geometry: Geometry_2, program: Program_2): string;
+    protected getSignature(geometry: Geometry, program: Program): string;
     /**
      * Creates or gets Vao with the same structure as the geometry and stores it on the geometry.
      * If vao is created, it is bound automatically.
@@ -1966,7 +1976,7 @@ declare class GeometrySystem extends System {
      * @param {PIXI.Geometry} geometry - Instance of geometry to to generate Vao for
      * @param {PIXI.Program} program - Instance of program
      */
-    protected initGeometryVao(geometry: Geometry_2, program: Program_2): WebGLVertexArrayObject;
+    protected initGeometryVao(geometry: Geometry, program: Program): WebGLVertexArrayObject;
     /**
      * Disposes buffer
      * @param {PIXI.Buffer} buffer buffer with data
@@ -1978,7 +1988,7 @@ declare class GeometrySystem extends System {
      * @param {PIXI.Geometry} geometry Geometry with buffers. Only VAO will be disposed
      * @param {boolean} [contextLost=false] If context was lost, we suppress deleteVertexArray
      */
-    disposeGeometry(geometry: Geometry_2, contextLost?: boolean): void;
+    disposeGeometry(geometry: Geometry, contextLost?: boolean): void;
     /**
      * dispose all WebGL resources of all managed geometries and buffers
      * @param {boolean} [contextLost=false] If context was lost, we suppress `gl.delete` calls
@@ -1991,7 +2001,7 @@ declare class GeometrySystem extends System {
      * @param {PIXI.Geometry} geometry - Geometry instance
      * @param {PIXI.Program} program - Shader program instance
      */
-    protected activateVao(geometry: Geometry_2, program: Program_2): void;
+    protected activateVao(geometry: Geometry, program: Program): void;
     /**
      * Draw the geometry
      *
@@ -2008,7 +2018,8 @@ declare class GeometrySystem extends System {
     protected unbind(): void;
 }
 
-declare class GLBuffer {
+declare class GLBuffer
+{
     buffer: WebGLBuffer;
     updateID: number;
     byteLength: number;
@@ -2021,7 +2032,8 @@ declare class GLBuffer {
  * @class
  * @memberof PIXI
  */
-export declare class GLFramebuffer {
+export declare class GLFramebuffer
+{
     framebuffer: WebGLFramebuffer;
     stencil: WebGLRenderbuffer;
     multisample: MSAA_QUALITY;
@@ -2039,7 +2051,8 @@ export declare class GLFramebuffer {
  * @class
  * @memberof PIXI
  */
-export declare class GLProgram {
+export declare class GLProgram
+{
     program: WebGLProgram;
     uniformData: {
         [x: string]: any;
@@ -2067,7 +2080,8 @@ export declare class GLProgram {
  * @class
  * @memberof PIXI
  */
-export declare class GLTexture {
+export declare class GLTexture
+{
     texture: WebGLTexture;
     width: number;
     height: number;
@@ -2134,7 +2148,8 @@ export declare interface IFilterTarget {
     getBounds(skipUpdate?: boolean): Rectangle;
 }
 
-export declare class IGLUniformData {
+export declare class IGLUniformData
+{
     location: WebGLUniformLocation;
     value: number | boolean | Float32Array | Int32Array | boolean[];
 }
@@ -2153,7 +2168,8 @@ declare interface IImageResourceOptions {
  * @memberof PIXI.resources
  * @param {ImageBitmap} source - Image element to use
  */
-declare class ImageBitmapResource extends BaseImageResource {
+declare class ImageBitmapResource extends BaseImageResource
+{
     /**
      * Used to auto-detect the type of resource.
      *
@@ -2170,7 +2186,8 @@ declare class ImageBitmapResource extends BaseImageResource {
  * @extends PIXI.resources.BaseImageResource
  * @memberof PIXI.resources
  */
-declare class ImageResource extends BaseImageResource {
+declare class ImageResource extends BaseImageResource
+{
     url: string;
     private _load;
     private _process;
@@ -2219,13 +2236,13 @@ declare class ImageResource extends BaseImageResource {
 
 export declare type ImageSource = HTMLImageElement | HTMLCanvasElement | HTMLVideoElement | ImageBitmap;
 
-export declare interface IMaskTarget extends IFilterTarget_2 {
+export declare interface IMaskTarget extends IFilterTarget {
     renderable: boolean;
     isSprite?: boolean;
     worldTransform: Matrix;
     isFastRect?(): boolean;
     getBounds(skipUpdate?: boolean): Rectangle;
-    render(renderer: Renderer_2): void;
+    render(renderer: Renderer): void;
 }
 
 /**
@@ -2309,8 +2326,8 @@ declare type IResourcePluginOptions = {
     [key: string]: any;
 };
 
-export declare interface ISpriteMaskTarget extends IMaskTarget_2 {
-    _texture: Texture_2;
+export declare interface ISpriteMaskTarget extends IMaskTarget {
+    _texture: Texture;
     worldAlpha: number;
     anchor: Point;
 }
@@ -2374,7 +2391,8 @@ declare interface IVideoResourceOptionsElement {
  * @class
  * @memberof PIXI
  */
-export declare class MaskData {
+export declare class MaskData
+{
     type: MASK_TYPES;
     autoDetect: boolean;
     maskObject: IMaskTarget;
@@ -2408,7 +2426,8 @@ export declare class MaskData {
  * @extends PIXI.System
  * @memberof PIXI.systems
  */
-declare class MaskSystem extends System {
+declare class MaskSystem extends System
+{
     enableScissor: boolean;
     protected readonly alphaMaskPool: Array<SpriteMaskFilter[]>;
     protected alphaMaskIndex: number;
@@ -2417,7 +2436,7 @@ declare class MaskSystem extends System {
     /**
      * @param {PIXI.Renderer} renderer - The renderer this System works for.
      */
-    constructor(renderer: Renderer_2);
+    constructor(renderer: Renderer);
     /**
      * Changes the mask stack that is used by this System.
      *
@@ -2464,12 +2483,13 @@ declare class MaskSystem extends System {
  * @extends PIXI.System
  * @memberof PIXI
  */
-export declare class ObjectRenderer {
-    protected renderer: Renderer_2;
+export declare class ObjectRenderer
+{
+    protected renderer: Renderer;
     /**
      * @param {PIXI.Renderer} renderer - The renderer this manager works for.
      */
-    constructor(renderer: Renderer_2);
+    constructor(renderer: Renderer);
     /**
      * Stub method that should be used to empty the current
      * batch by rendering objects now.
@@ -2507,7 +2527,8 @@ export declare class ObjectRenderer {
  * @class
  * @memberof PIXI
  */
-export declare class Program {
+export declare class Program
+{
     id: number;
     vertexSrc: string;
     fragmentSrc: string;
@@ -2595,7 +2616,8 @@ export declare class Program {
  * @extends PIXI.System
  * @memberof PIXI.systems
  */
-declare class ProjectionSystem extends System {
+declare class ProjectionSystem extends System
+{
     destinationFrame: Rectangle;
     sourceFrame: Rectangle;
     defaultFrame: Rectangle;
@@ -2604,7 +2626,7 @@ declare class ProjectionSystem extends System {
     /**
      * @param {PIXI.Renderer} renderer - The renderer this System works for.
      */
-    constructor(renderer: Renderer_2);
+    constructor(renderer: Renderer);
     /**
      * Updates the projection matrix based on a projection frame (which is a rectangle)
      *
@@ -2637,7 +2659,8 @@ declare class ProjectionSystem extends System {
  * @class
  * @memberof PIXI
  */
-export declare class Quad extends Geometry {
+export declare class Quad extends Geometry
+{
     constructor();
 }
 
@@ -2648,7 +2671,8 @@ export declare class Quad extends Geometry {
  * @memberof PIXI
  * @extends PIXI.Geometry
  */
-export declare class QuadUv extends Geometry {
+export declare class QuadUv extends Geometry
+{
     vertexBuffer: Buffer;
     uvBuffer: Buffer;
     vertices: Float32Array;
@@ -2681,7 +2705,8 @@ export declare class QuadUv extends Geometry {
  * @memberof PIXI
  * @extends PIXI.AbstractRenderer
  */
-export declare class Renderer extends AbstractRenderer {
+export declare class Renderer extends AbstractRenderer
+{
     gl: IRenderingContext;
     globalUniforms: UniformGroup;
     CONTEXT_UID: number;
@@ -2845,7 +2870,8 @@ export declare class Renderer extends AbstractRenderer {
  * @extends PIXI.Texture
  * @memberof PIXI
  */
-export declare class RenderTexture extends Texture {
+export declare class RenderTexture extends Texture
+{
     filterFrame: Rectangle | null;
     filterPoolKey: string | number | null;
     legacyRenderer: any;
@@ -2859,7 +2885,7 @@ export declare class RenderTexture extends Texture {
      * @member {PIXI.Framebuffer}
      * @readonly
      */
-    get framebuffer(): Framebuffer_2;
+    get framebuffer(): Framebuffer;
     /**
      * Resizes the RenderTexture.
      *
@@ -2884,7 +2910,7 @@ export declare class RenderTexture extends Texture {
      * @param {number} [options.resolution=1] - The resolution / device pixel ratio of the texture being generated
      * @return {PIXI.RenderTexture} The new render texture
      */
-    static create(options: IBaseTextureOptions_2): RenderTexture;
+    static create(options: IBaseTextureOptions): RenderTexture;
 }
 
 /**
@@ -2899,7 +2925,8 @@ export declare class RenderTexture extends Texture {
  * @class
  * @memberof PIXI
  */
-export declare class RenderTexturePool {
+export declare class RenderTexturePool
+{
     textureOptions: IBaseTextureOptions;
     enableFullScreen: boolean;
     texturePool: {
@@ -2984,9 +3011,10 @@ export declare class RenderTexturePool {
  * @extends PIXI.System
  * @memberof PIXI.systems
  */
-declare class RenderTextureSystem extends System {
+declare class RenderTextureSystem extends System
+{
     clearColor: number[];
-    defaultMaskStack: Array<MaskData_2>;
+    defaultMaskStack: Array<MaskData>;
     current: RenderTexture;
     readonly sourceFrame: Rectangle;
     readonly destinationFrame: Rectangle;
@@ -3025,7 +3053,8 @@ declare class RenderTextureSystem extends System {
  * @class
  * @memberof PIXI.resources
  */
-declare abstract class Resource {
+declare abstract class Resource
+{
     destroyed: boolean;
     internal: boolean;
     protected _width: number;
@@ -3129,29 +3158,29 @@ declare abstract class Resource {
 
 declare namespace resources {
   export {
-    Resource,
-    BaseImageResource,
-    autoDetectResource,
-    IResourcePluginOptions,
-    IAutoDetectOptions,
-    IResourcePlugin,
-    INSTALLED,
-    ArrayResource,
-    BufferResource,
-    CanvasResource,
-    ICubeResourceOptions,
-    CubeResource,
-    IImageResourceOptions,
-    ImageResource,
-    ISVGResourceOptions,
-    SVGResource,
-    IVideoResourceOptions,
-    IVideoResourceOptionsElement,
-    VideoResource,
-    ImageBitmapResource,
-  }
+      Resource,
+      BaseImageResource,
+      autoDetectResource,
+      IResourcePluginOptions,
+      IAutoDetectOptions,
+      IResourcePlugin,
+      INSTALLED,
+      ArrayResource,
+      BufferResource,
+      CanvasResource,
+      ICubeResourceOptions,
+      CubeResource,
+      IImageResourceOptions,
+      ImageResource,
+      ISVGResourceOptions,
+      SVGResource,
+      IVideoResourceOptions,
+      IVideoResourceOptionsElement,
+      VideoResource,
+      ImageBitmapResource,
+  };
 }
-export { resources }
+export { resources };
 
 /**
  * System plugin to the renderer to manage scissor rects (used for masks).
@@ -3160,11 +3189,12 @@ export { resources }
  * @extends PIXI.System
  * @memberof PIXI.systems
  */
-declare class ScissorSystem extends AbstractMaskSystem {
+declare class ScissorSystem extends AbstractMaskSystem
+{
     /**
      * @param {PIXI.Renderer} renderer - The renderer this System works for.
      */
-    constructor(renderer: Renderer_2);
+    constructor(renderer: Renderer);
     getStackLength(): number;
     /**
      * Applies the Mask and adds it to the current stencil stack. @alvin
@@ -3189,7 +3219,8 @@ declare class ScissorSystem extends AbstractMaskSystem {
  * @class
  * @memberof PIXI
  */
-export declare class Shader {
+export declare class Shader
+{
     program: Program;
     uniformGroup: UniformGroup;
     /**
@@ -3230,17 +3261,18 @@ export declare class Shader {
  * @memberof PIXI.systems
  * @extends PIXI.System
  */
-declare class ShaderSystem extends System {
-    protected gl: IRenderingContext_2;
-    shader: Shader_2;
-    program: Program_2;
+declare class ShaderSystem extends System
+{
+    protected gl: IRenderingContext;
+    shader: Shader;
+    program: Program;
     id: number;
     destroyed: boolean;
     private cache;
     /**
      * @param {PIXI.Renderer} renderer - The renderer this System works for.
      */
-    constructor(renderer: Renderer_2);
+    constructor(renderer: Renderer);
     /**
      * Overrideable function by `@pixi/unsafe-eval` to silence
      * throwing an error if platform doesn't support unsafe-evals.
@@ -3248,7 +3280,7 @@ declare class ShaderSystem extends System {
      * @private
      */
     private systemCheck;
-    protected contextChange(gl: IRenderingContext_2): void;
+    protected contextChange(gl: IRenderingContext): void;
     /**
      * Changes the current shader to the one given in parameter
      *
@@ -3256,7 +3288,7 @@ declare class ShaderSystem extends System {
      * @param {boolean} [dontSync] - false if the shader should automatically sync its uniforms.
      * @returns {PIXI.GLProgram} the glProgram that belongs to the shader.
      */
-    bind(shader: Shader_2, dontSync?: boolean): GLProgram;
+    bind(shader: Shader, dontSync?: boolean): GLProgram;
     /**
      * Uploads the uniforms values to the currently bound shader.
      *
@@ -3271,15 +3303,15 @@ declare class ShaderSystem extends System {
      * @param {*} group the uniform group to sync
      * @param {*} [syncData] this is data that is passed to the sync function and any nested sync functions
      */
-    syncUniformGroup(group: UniformGroup_2, syncData?: any): void;
+    syncUniformGroup(group: UniformGroup, syncData?: any): void;
     /**
      * Overrideable by the @pixi/unsafe-eval package to use static
      * syncUnforms instead.
      *
      * @private
      */
-    syncUniforms(group: UniformGroup_2, glProgram: GLProgram, syncData: any): void;
-    createSyncGroups(group: UniformGroup_2): Function;
+    syncUniforms(group: UniformGroup, glProgram: GLProgram, syncData: any): void;
+    createSyncGroups(group: UniformGroup): Function;
     /**
      * Takes a uniform group and data and generates a unique signature for them.
      *
@@ -3303,7 +3335,7 @@ declare class ShaderSystem extends System {
      * @param {PIXI.Shader} shader the shader that the glProgram will be based on.
      * @return {PIXI.GLProgram} A shiny new glProgram!
      */
-    generateShader(shader: Shader_2): GLProgram;
+    generateShader(shader: Shader): GLProgram;
     /**
      * Resets ShaderSystem state, does not affect WebGL state
      */
@@ -3323,13 +3355,14 @@ declare class ShaderSystem extends System {
  * @extends PIXI.Filter
  * @memberof PIXI
  */
-export declare class SpriteMaskFilter extends Filter {
-    maskSprite: IMaskTarget_2;
+export declare class SpriteMaskFilter extends Filter
+{
+    maskSprite: IMaskTarget;
     maskMatrix: Matrix;
     /**
      * @param {PIXI.Sprite} sprite - the target sprite
      */
-    constructor(sprite: IMaskTarget_2);
+    constructor(sprite: IMaskTarget);
     /**
      * Applies the filter
      *
@@ -3338,7 +3371,7 @@ export declare class SpriteMaskFilter extends Filter {
      * @param {PIXI.RenderTexture} output - The target to output to.
      * @param {PIXI.CLEAR_MODES} clearMode - Should the output be cleared before rendering to it.
      */
-    apply(filterManager: FilterSystem, input: RenderTexture_2, output: RenderTexture_2, clearMode: CLEAR_MODES): void;
+    apply(filterManager: FilterSystem, input: RenderTexture, output: RenderTexture, clearMode: CLEAR_MODES): void;
 }
 
 /**
@@ -3350,7 +3383,8 @@ export declare class SpriteMaskFilter extends Filter {
  * @class
  * @memberof PIXI
  */
-export declare class State {
+export declare class State
+{
     data: number;
     _blendMode: BLEND_MODES;
     _polygonOffset: number;
@@ -3421,12 +3455,13 @@ export declare class State {
  * @extends PIXI.System
  * @memberof PIXI.systems
  */
-declare class StateSystem extends System {
+declare class StateSystem extends System
+{
     stateId: number;
     polygonOffset: number;
     blendMode: BLEND_MODES;
     protected _blendEq: boolean;
-    protected gl: IRenderingContext_2;
+    protected gl: IRenderingContext;
     protected blendModes: number[][];
     protected readonly map: Array<(value: boolean) => void>;
     protected readonly checks: Array<(system: this, state: State) => void>;
@@ -3434,8 +3469,8 @@ declare class StateSystem extends System {
     /**
      * @param {PIXI.Renderer} renderer - The renderer this System works for.
      */
-    constructor(renderer: Renderer_2);
-    contextChange(gl: IRenderingContext_2): void;
+    constructor(renderer: Renderer);
+    contextChange(gl: IRenderingContext): void;
     /**
      * Sets the current state
      *
@@ -3532,11 +3567,12 @@ declare class StateSystem extends System {
  * @extends PIXI.System
  * @memberof PIXI.systems
  */
-declare class StencilSystem extends AbstractMaskSystem {
+declare class StencilSystem extends AbstractMaskSystem
+{
     /**
      * @param {PIXI.Renderer} renderer - The renderer this System works for.
      */
-    constructor(renderer: Renderer_2);
+    constructor(renderer: Renderer);
     getStackLength(): number;
     /**
      * Applies the Mask and adds it to the current stencil stack.
@@ -3575,7 +3611,8 @@ declare class StencilSystem extends AbstractMaskSystem {
  * @param {number} [options.height] Rasterize SVG this high. Aspect ratio preserved if width not specified.
  * @param {boolean} [options.autoLoad=true] Start loading right away.
  */
-declare class SVGResource extends BaseImageResource {
+declare class SVGResource extends BaseImageResource
+{
     readonly svg: string;
     readonly scale: number;
     readonly _overrideWidth: number;
@@ -3630,7 +3667,8 @@ declare class SVGResource extends BaseImageResource {
  * @class
  * @memberof PIXI
  */
-export declare class System {
+export declare class System
+{
     renderer: Renderer;
     /**
      * @param {PIXI.Renderer} renderer - The renderer this manager works for.
@@ -3644,24 +3682,24 @@ export declare class System {
 
 declare namespace systems {
   export {
-    FilterSystem,
-    BatchSystem,
-    ISupportDict,
-    ContextSystem,
-    FramebufferSystem,
-    GeometrySystem,
-    MaskSystem,
-    ScissorSystem,
-    StencilSystem,
-    ProjectionSystem,
-    RenderTextureSystem,
-    ShaderSystem,
-    StateSystem,
-    TextureGCSystem,
-    TextureSystem,
-  }
+      FilterSystem,
+      BatchSystem,
+      ISupportDict,
+      ContextSystem,
+      FramebufferSystem,
+      GeometrySystem,
+      MaskSystem,
+      ScissorSystem,
+      StencilSystem,
+      ProjectionSystem,
+      RenderTextureSystem,
+      ShaderSystem,
+      StateSystem,
+      TextureGCSystem,
+      TextureSystem,
+  };
 }
-export { systems }
+export { systems };
 
 /**
  * A texture stores the information that represents an image or part of an image.
@@ -3693,7 +3731,8 @@ export { systems }
  * @extends PIXI.utils.EventEmitter
  * @memberof PIXI
  */
-export declare class Texture extends EventEmitter {
+export declare class Texture extends EventEmitter
+{
     baseTexture: BaseTexture;
     orig: Rectangle;
     trim: Rectangle;
@@ -3853,7 +3892,8 @@ export declare class Texture extends EventEmitter {
  * @memberof PIXI.systems
  * @extends PIXI.System
  */
-declare class TextureGCSystem extends System {
+declare class TextureGCSystem extends System
+{
     count: number;
     checkCount: number;
     maxIdle: number;
@@ -3862,7 +3902,7 @@ declare class TextureGCSystem extends System {
     /**
      * @param {PIXI.Renderer} renderer - The renderer this System works for.
      */
-    constructor(renderer: Renderer_2);
+    constructor(renderer: Renderer);
     /**
      * Checks to see when the last time a texture was used
      * if the texture has not been used for a specified amount of time it will be removed from the GPU
@@ -3898,7 +3938,8 @@ declare class TextureGCSystem extends System {
  * @class
  * @memberof PIXI
  */
-export declare class TextureMatrix {
+export declare class TextureMatrix
+{
     mapCoord: Matrix;
     clampOffset: number;
     clampMargin: number;
@@ -3944,11 +3985,12 @@ export declare type TextureSource = string | BaseTexture | ImageSource;
  * @extends PIXI.System
  * @memberof PIXI.systems
  */
-declare class TextureSystem extends System {
+declare class TextureSystem extends System
+{
     boundTextures: BaseTexture[];
     managedTextures: Array<BaseTexture>;
     protected CONTEXT_UID: number;
-    protected gl: IRenderingContext_2;
+    protected gl: IRenderingContext;
     protected webGLVersion: number;
     protected unknownTexture: BaseTexture;
     protected _unknownBoundTextures: boolean;
@@ -3959,7 +4001,7 @@ declare class TextureSystem extends System {
     /**
      * @param {PIXI.Renderer} renderer - The renderer this System works for.
      */
-    constructor(renderer: Renderer_2);
+    constructor(renderer: Renderer);
     /**
      * Sets up the renderer context and necessary buffers.
      */
@@ -4040,7 +4082,8 @@ declare class TextureSystem extends System {
  * @protected
  * @memberof PIXI
  */
-export declare class TextureUvs {
+export declare class TextureUvs
+{
     x0: number;
     y0: number;
     x1: number;
@@ -4068,7 +4111,8 @@ export declare class TextureUvs {
  * @class
  * @memberof PIXI
  */
-export declare class UniformGroup {
+export declare class UniformGroup
+{
     readonly uniforms: {
         [key: string]: any;
     };
@@ -4110,7 +4154,8 @@ export declare const uniformParsers: IUniformParser[];
  * Leave at 0 to update at every render.
  * @param {boolean} [options.crossorigin=true] - Load image using cross origin
  */
-declare class VideoResource extends BaseImageResource {
+declare class VideoResource extends BaseImageResource
+{
     protected _autoUpdate: boolean;
     protected _isConnectedToTicker: boolean;
     protected _updateFPS: number;
@@ -4216,7 +4261,8 @@ declare class VideoResource extends BaseImageResource {
  * @class
  * @memberof PIXI
  */
-export declare class ViewableBuffer {
+export declare class ViewableBuffer
+{
     size: number;
     rawBinaryData: ArrayBuffer;
     uint32View: Uint32Array;
@@ -4276,4 +4322,4 @@ export declare class ViewableBuffer {
     static sizeOf(type: string): number;
 }
 
-export { }
+export { };

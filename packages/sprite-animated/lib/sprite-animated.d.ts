@@ -35,7 +35,8 @@ import { Texture } from '@pixi/core';
  * @extends PIXI.Sprite
  * @memberof PIXI
  */
-export declare class AnimatedSprite extends Sprite {
+export declare class AnimatedSprite extends Sprite
+{
     animationSpeed: number;
     loop: boolean;
     updateAnchor: boolean;
@@ -159,4 +160,4 @@ export declare interface FrameObject {
     time: number;
 }
 
-export { }
+export { };

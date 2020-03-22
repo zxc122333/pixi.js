@@ -38,7 +38,8 @@ import { Texture } from '@pixi/core';
  * @memberof PIXI
  *
  */
-export declare class NineSlicePlane extends SimplePlane {
+export declare class NineSlicePlane extends SimplePlane
+{
     private _origWidth;
     private _origHeight;
     private _leftWidth;
@@ -121,7 +122,8 @@ export declare class NineSlicePlane extends SimplePlane {
     private _refresh;
 }
 
-export declare class PlaneGeometry extends MeshGeometry {
+export declare class PlaneGeometry extends MeshGeometry
+{
     segWidth: number;
     segHeight: number;
     width: number;
@@ -149,7 +151,8 @@ export declare class PlaneGeometry extends MeshGeometry {
  * @memberof PIXI
  *
  */
-export declare class RopeGeometry extends MeshGeometry {
+export declare class RopeGeometry extends MeshGeometry
+{
     points: IPoint[];
     readonly textureScale: number;
     _width: number;
@@ -191,7 +194,8 @@ export declare class RopeGeometry extends MeshGeometry {
  * @extends PIXI.Mesh
  * @memberof PIXI
  */
-export declare class SimpleMesh extends Mesh {
+export declare class SimpleMesh extends Mesh
+{
     autoUpdate: boolean;
     /**
      * @param {PIXI.Texture} [texture=Texture.EMPTY] - The texture to use
@@ -225,7 +229,8 @@ export declare class SimpleMesh extends Mesh {
  * @memberof PIXI
  *
  */
-export declare class SimplePlane extends Mesh {
+export declare class SimplePlane extends Mesh
+{
     protected _textureID: number;
     /**
      * @param {PIXI.Texture} texture - The texture to use on the SimplePlane.
@@ -258,7 +263,8 @@ export declare class SimplePlane extends Mesh {
  * @memberof PIXI
  *
  */
-export declare class SimpleRope extends Mesh {
+export declare class SimpleRope extends Mesh
+{
     autoUpdate: boolean;
     /**
      * @param {PIXI.Texture} texture - The texture to use on the rope.
@@ -271,4 +277,4 @@ export declare class SimpleRope extends Mesh {
     _render(renderer: Renderer): void;
 }
 
-export { }
+export { };
