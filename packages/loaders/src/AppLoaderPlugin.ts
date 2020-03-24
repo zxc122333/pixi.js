@@ -1,6 +1,10 @@
 import { Loader } from './Loader';
 
-import type { IApplicationOptions } from '@pixi/app';
+export interface IAppLoaderPluginOptions
+{
+    sharedLoader: boolean;
+}
+
 /**
  * Application plugin for supporting loader option. Installing the LoaderPlugin
  * is not necessary if using **pixi.js** or **pixi.js-legacy**.
@@ -19,7 +23,7 @@ export class AppLoaderPlugin
      * @param {object} options
      * @private
      */
-    static init(options?: IApplicationOptions): void
+    static init(options?: IAppLoaderPluginOptions): void
     {
         options = Object.assign({
             sharedLoader: false,

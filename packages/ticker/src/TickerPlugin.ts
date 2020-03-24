@@ -1,7 +1,11 @@
 import { UPDATE_PRIORITY } from './const';
 import { Ticker } from './Ticker';
 
-import type { IApplicationOptions } from '@pixi/app';
+export interface ITickerPluginOptions
+{
+    autoStart: boolean;
+    sharedTicker: boolean;
+}
 
 /**
  * Middleware for for Application Ticker.
@@ -28,7 +32,7 @@ export class TickerPlugin
      * @private
      * @param {object} [options] - See application options
      */
-    static init(options?: IApplicationOptions): void
+    static init(options?: ITickerPluginOptions): void
     {
         // Set default
         options = Object.assign({
