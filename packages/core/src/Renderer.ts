@@ -24,7 +24,6 @@ import type { RenderTexture } from './renderTexture/RenderTexture';
 import type { DisplayObject } from '@pixi/display';
 import type { System } from './System';
 import type { IRenderingContext } from './IRenderingContext';
-import type { Extract } from '@pixi/extract';
 
 export interface IRendererPluginConstructor {
     new (renderer: Renderer): IRendererPlugin;
@@ -33,6 +32,9 @@ export interface IRendererPluginConstructor {
 export interface IRendererPlugin {
     destroy(): void;
 }
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface Renderer extends GlobalMixins.Renderer, AbstractRenderer {}
 
 /**
  * The Renderer draws the scene and all its content onto a WebGL enabled canvas.
@@ -52,7 +54,6 @@ export class Renderer extends AbstractRenderer
     public globalUniforms: UniformGroup;
     public CONTEXT_UID: number;
     public renderingToScreen: boolean;
-    public extract: Extract;
     // systems
     public mask: MaskSystem;
     public context: ContextSystem;

@@ -8,6 +8,11 @@ import type { DisplayObject } from '@pixi/display';
 const TEMP_RECT = new Rectangle();
 const BYTES_PER_PIXEL = 4;
 
+export interface ExtractRenderer
+{
+    extract: Extract;
+}
+
 /**
  * This class provides renderer-specific plugins for exporting content from a renderer.
  * For instance, these plugins can be used for saving an Image, Canvas element or for exporting the raw image data (pixels).
