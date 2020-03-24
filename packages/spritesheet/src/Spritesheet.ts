@@ -4,6 +4,19 @@ import { getResolutionOfUrl } from '@pixi/utils';
 import type { Dict } from '@pixi/utils';
 import type { BaseTexture, resources } from '@pixi/core';
 
+export interface ISpritesheetMetadata
+{
+    imageMetadata: any;
+}
+
+export interface ISpritesheetResource
+{
+    spritesheet: Spritesheet;
+
+    // required for Spritesheet
+    textures: Dict<Texture>;
+}
+
 /**
  * Utility class for maintaining reference to a collection
  * of Textures on a single Spritesheet.

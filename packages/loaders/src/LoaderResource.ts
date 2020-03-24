@@ -1,19 +1,13 @@
 import { Resource } from 'resource-loader';
 
-import type { Spritesheet } from '@pixi/spritesheet';
 import type { Texture } from '@pixi/core';
-import type { Dict } from '@pixi/utils';
 
-export interface IResourceMetadata extends Resource.IMetadata {
-    imageMetadata?: any;
-}
-export interface ILoaderResource extends Resource
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface IResourceMetadata extends Resource.IMetadata, GlobalMixins.IResourceMetadata {}
+
+export interface ILoaderResource extends Resource, GlobalMixins.ILoaderResource
 {
     texture?: Texture;
-    spritesheet?: Spritesheet;
-
-    // required for Spritesheet
-    textures?: Dict<Texture>;
 
     // required specific type for Spritesheet
     metadata: IResourceMetadata;
